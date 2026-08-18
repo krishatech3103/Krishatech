@@ -1,0 +1,19 @@
+{
+  "name": "krishatech",
+  "version": "1.0.0",
+  "description": "Krisha Tech - Professional Web Development & IT Solutions",
+  "main": "index.html",
+  "scripts": {
+    "dev": "npx -y serve .",
+    "start": "npx -y serve ."
+  },
+  "keywords": [
+    "krisha-tech",
+    "web-development",
+    "small-business-websites",
+    "whatsapp-integration",
+    "static-website"
+  ],
+  "author": "Krisha Tech",
+  "license": "MIT"
+}
