@@ -404,7 +404,17 @@ body::after {
   border-radius: var(--radius-sm);
   cursor: pointer;
   align-items: center;
-  font-size: 1.2rem;
+  justify-content: center;
+  transition: all var(--transition-fast);
+}
+
+.menu-toggle-btn:hover {
+  background: rgba(99, 102, 241, 0.3);
+  border-color: var(--primary-indigo);
+}
+
+[data-theme="light"] .menu-toggle-btn {
+  color: #0f172a;
 }
 
 /* --- Hero Section --- */

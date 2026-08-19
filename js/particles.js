@@ -1,96 +1,67 @@
-/* ==========================================================================
-   KRISHA TECH - Dynamic Interactive Particle Background Canvas Engine
-   ========================================================================== */
-
-document.addEventListener('DOMContentLoaded', () => {
-  const canvas = document.getElementById('cyber-canvas');
+(function() {
+  const canvas = document.getElementById('agency-canvas');
   if (!canvas) return;
-
   const ctx = canvas.getContext('2d');
-  let width, height;
-  let particles = [];
 
-  function resizeCanvas() {
+  let width = canvas.width = window.innerWidth;
+  let height = canvas.height = window.innerHeight;
+
+  window.addEventListener('resize', () => {
     width = canvas.width = window.innerWidth;
     height = canvas.height = window.innerHeight;
-  }
+  });
 
-  window.addEventListener('resize', resizeCanvas);
-  resizeCanvas();
-
-  const particleCount = Math.floor(Math.min(width, height) / 18);
-
-  class Particle {
-    constructor() {
-      this.reset();
-    }
-
-    reset() {
-      this.x = Math.random() * width;
-      this.y = Math.random() * height;
-      this.vx = (Math.random() - 0.5) * 0.4;
-      this.vy = (Math.random() - 0.5) * 0.4;
-      this.radius = Math.random() * 1.8 + 0.8;
-      this.alpha = Math.random() * 0.5 + 0.2;
-    }
-
-    update() {
-      this.x += this.vx;
-      this.y += this.vy;
-
-      if (this.x < 0 || this.x > width) this.vx *= -1;
-      if (this.y < 0 || this.y > height) this.vy *= -1;
-    }
-
-    draw(isLight) {
-      ctx.beginPath();
-      ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-      ctx.fillStyle = isLight
-        ? `rgba(37, 99, 235, ${this.alpha * 0.7})`
-        : `rgba(0, 243, 255, ${this.alpha})`;
-      ctx.fill();
-    }
-  }
+  const particles = [];
+  const particleCount = Math.min(Math.floor(width / 25), 45);
 
   for (let i = 0; i < particleCount; i++) {
-    particles.push(new Particle());
+    particles.push({
+      x: Math.random() * width,
+      y: Math.random() * height,
+      vx: (Math.random() - 0.5) * 0.4,
+      vy: (Math.random() - 0.5) * 0.4,
+      radius: Math.random() * 2 + 1,
+      alpha: Math.random() * 0.5 + 0.2
+    });
   }
 
-  function drawConnections(isLight) {
-    const maxDistance = 120;
+  function animate() {
+    ctx.clearRect(0, 0, width, height);
+
     for (let i = 0; i < particles.length; i++) {
+      const p = particles[i];
+      p.x += p.vx;
+      p.y += p.vy;
+
+      if (p.x < 0) p.x = width;
+      if (p.x > width) p.x = 0;
+      if (p.y < 0) p.y = height;
+      if (p.y > height) p.y = 0;
+
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(99, 102, 241, ${p.alpha})`;
+      ctx.fill();
+
       for (let j = i + 1; j < particles.length; j++) {
-        const dx = particles[i].x - particles[j].x;
-        const dy = particles[i].y - particles[j].y;
+        const p2 = particles[j];
+        const dx = p.x - p2.x;
+        const dy = p.y - p2.y;
         const dist = Math.sqrt(dx * dx + dy * dy);
 
-        if (dist < maxDistance) {
-          const alpha = (1 - dist / maxDistance) * (isLight ? 0.12 : 0.2);
+        if (dist < 120) {
           ctx.beginPath();
-          ctx.moveTo(particles[i].x, particles[i].y);
-          ctx.lineTo(particles[j].x, particles[j].y);
-          ctx.strokeStyle = isLight
-            ? `rgba(37, 99, 235, ${alpha})`
-            : `rgba(0, 243, 255, ${alpha})`;
-          ctx.lineWidth = 0.6;
+          ctx.moveTo(p.x, p.y);
+          ctx.lineTo(p2.x, p2.y);
+          ctx.strokeStyle = `rgba(99, 102, 241, ${0.15 * (1 - dist / 120)})`;
+          ctx.lineWidth = 0.8;
           ctx.stroke();
         }
       }
     }
-  }
 
-  function animate() {
-    const isLight = document.documentElement.getAttribute('data-theme') === 'light';
-    ctx.clearRect(0, 0, width, height);
-
-    particles.forEach(p => {
-      p.update();
-      p.draw(isLight);
-    });
-
-    drawConnections(isLight);
     requestAnimationFrame(animate);
   }
 
   animate();
-});
+})();
