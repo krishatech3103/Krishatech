@@ -27,7 +27,9 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     navMenu.querySelectorAll('.nav-link').forEach(link => {
-      link.addEventListener('click', () => {
+      link.addEventListener('click', (e) => {
+        navMenu.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+        link.classList.add('active');
         navMenu.classList.remove('open');
         if (hamburgerIcon && closeIcon) {
           hamburgerIcon.style.display = 'block';
@@ -36,6 +38,32 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     });
   }
+
+  // Scroll Spy for Active Navigation Link Highlighting
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.nav-link');
+
+  function highlightNavOnScroll() {
+    const scrollY = window.scrollY;
+
+    sections.forEach(current => {
+      const sectionHeight = current.offsetHeight;
+      const sectionTop = current.offsetTop - 140;
+      const sectionId = current.getAttribute('id');
+
+      if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
+        navLinks.forEach(link => {
+          link.classList.remove('active');
+          if (link.getAttribute('href') === `#${sectionId}`) {
+            link.classList.add('active');
+          }
+        });
+      }
+    });
+  }
+
+  window.addEventListener('scroll', highlightNavOnScroll, { passive: true });
+  highlightNavOnScroll(); // Initial check
 
   // Theme Toggler (Light / Dark mode with local storage persistence)
   const themeToggleBtn = document.getElementById('theme-toggle');
