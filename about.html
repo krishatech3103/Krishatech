@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Us | Krisha Tech Agency</title>
+  <meta name="description" content="Learn about Krisha Tech - empowering Indian small businesses with affordable, high-speed, mobile-responsive web development.">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Animated Preloader -->
+  <div id="preloader">
+    <div class="preloader-content">
+      <div class="preloader-spinner-box">
+        <div class="spinner-ring"></div>
+        <img src="assets/krishatech_k_logo_4k.png" alt="Krisha Tech Logo" class="preloader-logo">
+      </div>
+      <div class="preloader-counter" id="preloader-counter">0%</div>
+      <div class="preloader-progress-track">
+        <div class="preloader-progress-bar" id="preloader-progress-bar"></div>
+      </div>
+      <div class="preloader-status-text" id="preloader-status-text">INITIALIZING ENGINE...</div>
+    </div>
+  </div>
+
+  <canvas id="agency-canvas"></canvas>
+
+  <!-- Navigation Header -->
+  <header class="site-header">
+    <div class="container">
+      <div class="nav-wrapper">
+        <a href="index.html" class="brand-logo">
+          <img src="assets/krishatech_k_logo_4k.png" alt="Krisha Tech Logo" class="brand-logo-img">
+          <div class="brand-text-container">
+            <span class="brand-title">KRISHA TECH</span>
+            <span class="brand-sub">WE BUILD. YOU GROW.</span>
+          </div>
+        </a>
+
+        <ul class="nav-menu" id="nav-menu">
+          <li><a href="index.html" class="nav-link">Home</a></li>
+          <li><a href="about.html" class="nav-link active">About Us</a></li>
+          <li><a href="services.html" class="nav-link">Services</a></li>
+          <li><a href="portfolio.html" class="nav-link">Portfolio</a></li>
+          <li><a href="contact.html" class="nav-link">Contact</a></li>
+        </ul>
+
+        <div class="header-right">
+          <a href="tel:7083330914" class="phone-badge">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/>
+            </svg>
+            <span>7083330914</span>
+          </a>
+
+          <a href="tel:7083330914" class="mobile-phone-btn" title="Call Now">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/>
+            </svg>
+          </a>
+
+          <button id="theme-toggle" class="theme-btn" title="Toggle Light/Dark Theme">
+            <svg class="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="5"/>
+              <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
+            </svg>
+            <svg class="moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/>
+            </svg>
+          </button>
+
+          <button id="menu-toggle" class="menu-toggle-btn" aria-label="Toggle Navigation Menu">
+            <svg class="hamburger-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="3" y1="6" x2="21" y2="6"></line>
+              <line x1="3" y1="12" x2="21" y2="12"></line>
+              <line x1="3" y1="18" x2="21" y2="18"></line>
+            </svg>
+            <svg class="close-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="display: none;">
+              <line x1="18" y1="6" x2="6" y2="18"></line>
+              <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Page Header -->
+  <section class="hero-section" style="padding-bottom: 50px;">
+    <div class="container">
+      <div data-animate="fade-up" style="text-align: center; max-width: 800px; margin: 0 auto;">
+        <div class="section-tag">About Krisha Tech</div>
+        <h1 class="section-title">EMPOWERING <span class="text-gradient-indigo">INDIAN BUSINESSES ONLINE</span></h1>
+        <p class="section-subtitle" style="margin: 0 auto 30px;">We remove expensive agency markup, eliminate monthly server fees, and deliver clean, high-performing websites built for local customer leads.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Core Pillars Grid -->
+  <section style="padding: 40px 0 80px;">
+    <div class="container">
+      <div class="services-grid" data-animate="stagger">
+        <div class="glass-card service-card">
+          <div class="service-icon">💎</div>
+          <h3 class="service-title">Transparent Pricing</h3>
+          <p class="service-desc">₹2,999 setup fee with zero hidden recurring server costs. You pay once for development and own your web presence.</p>
+        </div>
+
+        <div class="glass-card service-card">
+          <div class="service-icon">⏱️</div>
+          <h3 class="service-title">7-Day Delivery</h3>
+          <p class="service-desc">Our streamlined workflow ensures your professional business site is fully designed, tested, and live within 7 days.</p>
+        </div>
+
+        <div class="glass-card service-card">
+          <div class="service-icon">📱</div>
+          <h3 class="service-title">Lead Generation Focused</h3>
+          <p class="service-desc">Direct WhatsApp chat integration, click-to-call headers, and embedded maps engineered to turn visitors into paying clients.</p>
+        </div>
+
+        <div class="glass-card service-card">
+          <div class="service-icon">🚀</div>
+          <h3 class="service-title">Zero Server Crashes</h3>
+          <p class="service-desc">Built using modern static architecture deployed on global CDN edge nodes for 99.9% uptime and instant loading.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7-Day Process Timeline -->
+  <section style="padding: 60px 0 90px; background: rgba(0, 0, 0, 0.2);">
+    <div class="container">
+      <div data-animate="fade-up" style="text-align: center;">
+        <div class="section-tag">Our Workflow</div>
+        <h2 class="section-title">HOW WE BUILD IN <span class="text-gradient-indigo">7 DAYS</span></h2>
+        <p class="section-subtitle" style="margin: 0 auto 50px;">A clear, predictable step-by-step roadmap from initial concept to custom domain go-live.</p>
+      </div>
+
+      <div class="timeline-grid" data-animate="stagger">
+        <div class="glass-card timeline-card">
+          <div class="timeline-step-badge">01</div>
+          <h3 class="timeline-step-title">Day 1: Requirement Gathering</h3>
+          <p class="timeline-step-desc">We collect your business photos, phone number, service details, and domain preference over a quick WhatsApp chat.</p>
+        </div>
+
+        <div class="glass-card timeline-card">
+          <div class="timeline-step-badge">02</div>
+          <h3 class="timeline-step-title">Day 3: Design & Wireframe</h3>
+          <p class="timeline-step-desc">Our team crafts modern glassmorphism mockups styled specifically for your industry brand colors and audience.</p>
+        </div>
+
+        <div class="glass-card timeline-card">
+          <div class="timeline-step-badge">03</div>
+          <h3 class="timeline-step-title">Day 5: Leads & Map Integration</h3>
+          <p class="timeline-step-desc">We add direct WhatsApp quotation triggers, mobile quick-dial bars, and embedded Google Maps for local SEO.</p>
+        </div>
+
+        <div class="glass-card timeline-card">
+          <div class="timeline-step-badge">04</div>
+          <h3 class="timeline-step-title">Day 7: Domain & Go-Live!</h3>
+          <p class="timeline-step-desc">We connect your custom GoDaddy domain, configure SSL encryption, and launch your site live to the world!</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Box -->
+  <section style="padding: 80px 0 100px;">
+    <div class="container">
+      <div class="glass-card calculator-box" data-animate="scale-up" style="text-align: center; max-width: 800px; margin: 0 auto;">
+        <h2 class="section-title" style="font-size: 2.2rem; margin-bottom: 14px;">READY TO LAUNCH YOUR WEBSITE?</h2>
+        <p style="color: var(--text-muted); font-size: 1.1rem; margin-bottom: 30px;">Let Krisha Tech build your professional online presence today for just ₹2,999.</p>
+        <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
+          <a href="https://wa.me/917083330914?text=Hello%20Krisha%20Tech,%20I%20want%20to%20know%20more%20about%20your%20website%20services." target="_blank" class="btn btn-indigo">
+            Chat on WhatsApp 💬
+          </a>
+          <a href="contact.html" class="btn btn-outline">
+            View Contact Details
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Floating Actions -->
+  <div class="floating-actions-bar">
+    <a href="https://wa.me/917083330914?text=Hello%20Krisha%20Tech" target="_blank" class="float-btn float-whatsapp" title="WhatsApp Chat">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/></svg>
+    </a>
+    <a href="tel:7083330914" class="float-btn float-call" title="Call Now">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+    </a>
+  </div>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <a href="index.html" class="brand-logo">
+            <img src="assets/krishatech_k_logo_4k.png" alt="Krisha Tech Logo" class="brand-logo-img">
+            <div class="brand-text-container">
+              <span class="brand-title">KRISHA TECH</span>
+              <span class="brand-sub">WE BUILD. YOU GROW.</span>
+            </div>
+          </a>
+          <p class="footer-brand-desc">
+            High-speed, conversion-focused websites designed for Indian small business owners.
+          </p>
+        </div>
+
+        <div>
+          <h4 class="footer-col-title">SOLUTIONS</h4>
+          <ul class="footer-links">
+            <li><a href="services.html">Mobile Websites</a></li>
+            <li><a href="services.html">WhatsApp Integration</a></li>
+            <li><a href="services.html">Google Maps & SEO</a></li>
+            <li><a href="services.html">Cost Estimator</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer-col-title">QUICK PAGES</h4>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="services.html">Our Services</a></li>
+            <li><a href="portfolio.html">Live Demos</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer-col-title">DIRECT CONTACT</h4>
+          <ul class="footer-links">
+            <li><a href="tel:7083330914">+91 7083330914</a></li>
+            <li><a href="https://wa.me/917083330914" target="_blank">WhatsApp Support</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>&copy; 2026 Krisha Tech. All Rights Reserved.</div>
+        <div style="color: var(--primary-indigo); font-family: var(--font-heading); font-weight: 800;">WE BUILD. YOU GROW.</div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/particles.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

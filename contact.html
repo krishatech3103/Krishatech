@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact & Pricing | Krisha Tech</title>
+  <meta name="description" content="Get in touch with Krisha Tech. Submit your business website inquiry, check transparent pricing, or ask questions on WhatsApp.">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Animated Preloader -->
+  <div id="preloader">
+    <div class="preloader-content">
+      <div class="preloader-spinner-box">
+        <div class="spinner-ring"></div>
+        <img src="assets/krishatech_k_logo_4k.png" alt="Krisha Tech Logo" class="preloader-logo">
+      </div>
+      <div class="preloader-counter" id="preloader-counter">0%</div>
+      <div class="preloader-progress-track">
+        <div class="preloader-progress-bar" id="preloader-progress-bar"></div>
+      </div>
+      <div class="preloader-status-text" id="preloader-status-text">INITIALIZING ENGINE...</div>
+    </div>
+  </div>
+
+  <canvas id="agency-canvas"></canvas>
+
+  <!-- Header Navigation -->
+  <header class="site-header">
+    <div class="container">
+      <div class="nav-wrapper">
+        <a href="index.html" class="brand-logo">
+          <img src="assets/krishatech_k_logo_4k.png" alt="Krisha Tech Logo" class="brand-logo-img">
+          <div class="brand-text-container">
+            <span class="brand-title">KRISHA TECH</span>
+            <span class="brand-sub">WE BUILD. YOU GROW.</span>
+          </div>
+        </a>
+
+        <ul class="nav-menu" id="nav-menu">
+          <li><a href="index.html" class="nav-link">Home</a></li>
+          <li><a href="about.html" class="nav-link">About Us</a></li>
+          <li><a href="services.html" class="nav-link">Services</a></li>
+          <li><a href="portfolio.html" class="nav-link">Portfolio</a></li>
+          <li><a href="contact.html" class="nav-link active">Contact</a></li>
+        </ul>
+
+        <div class="header-right">
+          <a href="tel:7083330914" class="phone-badge">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/>
+            </svg>
+            <span>7083330914</span>
+          </a>
+
+          <a href="tel:7083330914" class="mobile-phone-btn" title="Call Now">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/>
+            </svg>
+          </a>
+
+          <button id="theme-toggle" class="theme-btn" title="Toggle Light/Dark Theme">
+            <svg class="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="5"/>
+              <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
+            </svg>
+            <svg class="moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/>
+            </svg>
+          </button>
+
+          <button id="menu-toggle" class="menu-toggle-btn" aria-label="Toggle Navigation Menu">
+            <svg class="hamburger-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="3" y1="6" x2="21" y2="6"></line>
+              <line x1="3" y1="12" x2="21" y2="12"></line>
+              <line x1="3" y1="18" x2="21" y2="18"></line>
+            </svg>
+            <svg class="close-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="display: none;">
+              <line x1="18" y1="6" x2="6" y2="18"></line>
+              <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Page Header -->
+  <section class="hero-section" style="padding-bottom: 40px;">
+    <div class="container">
+      <div data-animate="fade-up" style="text-align: center; max-width: 800px; margin: 0 auto;">
+        <div class="section-tag">Direct Inquiry</div>
+        <h1 class="section-title">CONNECT WITH <span class="text-gradient-indigo">KRISHA TECH</span></h1>
+        <p class="section-subtitle" style="margin: 0 auto 30px;">Send a service request directly via WhatsApp or call our team today.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Layout & Lead Form -->
+  <section style="padding: 20px 0 80px;">
+    <div class="container">
+      <div class="contact-layout">
+        
+        <div data-animate="fade-right">
+          <div class="glass-card contact-card">
+            <h3 style="font-family: var(--font-heading); font-size: 1.4rem; color: #fff; margin-bottom: 8px;">GET IN TOUCH</h3>
+            <p style="color: var(--text-muted); font-size: 0.95rem;">Fast response time on WhatsApp & phone calls.</p>
+
+            <a href="tel:7083330914" class="contact-channel">
+              <div class="channel-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+              </div>
+              <div>
+                <div style="font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase;">Direct Line</div>
+                <div class="channel-val">+91 7083330914</div>
+              </div>
+            </a>
+
+            <a href="https://wa.me/917083330914?text=Hello%20Krisha%20Tech" target="_blank" class="contact-channel">
+              <div class="channel-icon" style="background: rgba(37, 211, 102, 0.15); color: #25d366;">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/></svg>
+              </div>
+              <div>
+                <div style="font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase;">WhatsApp Support</div>
+                <div class="channel-val" style="color: #25d366;">+91 7083330914</div>
+              </div>
+            </a>
+
+            <!-- Transparent Package Highlight Box -->
+            <div style="margin-top: 28px; padding: 20px; background: rgba(99, 102, 241, 0.08); border: 1px solid var(--bg-glass-border); border-radius: var(--radius-sm);">
+              <div style="font-family: var(--font-heading); font-size: 0.9rem; font-weight: 800; color: var(--primary-indigo); margin-bottom: 6px;">STARTER PACKAGE HIGHLIGHT</div>
+              <div style="font-family: var(--font-heading); font-size: 1.8rem; font-weight: 900; color: var(--accent-magenta);">₹ 2,999</div>
+              <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 4px;">Includes 3–5 custom mobile pages, WhatsApp lead integration, Google Maps setup, and 7-day delivery.</p>
+            </div>
+          </div>
+        </div>
+
+        <div data-animate="fade-left">
+          <div class="glass-card contact-card">
+            <h3 style="font-family: var(--font-heading); font-size: 1.4rem; color: #fff; margin-bottom: 20px;">SEND DIRECT SERVICE REQUEST</h3>
+
+            <form id="krisha-contact-form">
+              <div class="form-group">
+                <label class="form-label" for="form-name">Your Name</label>
+                <input type="text" id="form-name" class="form-input" placeholder="e.g. Rahul Sharma" required>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="form-phone">Phone Number</label>
+                <input type="tel" id="form-phone" class="form-input" placeholder="e.g. 7083330914" required>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="form-biztype">Business Category</label>
+                <select id="form-biztype" class="form-input" style="cursor: pointer;">
+                  <option value="CCTV / Security">CCTV / Security Dealer</option>
+                  <option value="Clinic / Hospital">Clinic / Healthcare</option>
+                  <option value="Home Service / Repair">AC Repair / Home Services</option>
+                  <option value="Coaching Institute">Coaching / Training</option>
+                  <option value="Retail Store">Retail Store / Showroom</option>
+                  <option value="Other Business">Other Business</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="form-msg">Requirements / Notes</label>
+                <textarea id="form-msg" class="form-input" rows="3" placeholder="Describe your business or website requirements..."></textarea>
+              </div>
+
+              <button type="submit" class="btn btn-indigo" style="width: 100%; font-size: 1.05rem;">
+                Send Request via WhatsApp 💬
+              </button>
+            </form>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- INTERACTIVE FAQ ACCORDION SECTION -->
+  <section style="padding: 60px 0 100px; background: rgba(0, 0, 0, 0.2);">
+    <div class="container">
+      <div data-animate="fade-up" style="text-align: center; max-width: 800px; margin: 0 auto 40px;">
+        <div class="section-tag">Got Questions?</div>
+        <h2 class="section-title">FREQUENTLY ASKED <span class="text-gradient-indigo">QUESTIONS</span></h2>
+        <p class="section-subtitle" style="margin: 0 auto;">Everything you need to know about our web design process and custom domains.</p>
+      </div>
+
+      <div class="faq-grid" data-animate="stagger">
+        <div class="faq-item open">
+          <button class="faq-question">
+            <span>Are there any hidden monthly hosting fees?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            No! We host your website on modern static cloud CDN architecture with zero monthly recurring server costs. You only pay for your initial setup (₹2,999) and your annual domain renewal.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>How long does delivery take?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            Your entire website will be designed, connected to your WhatsApp and domain, and launched live within 7 business days from requirement submission.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>How do customer leads reach my phone?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            All forms and action buttons on your website directly open a pre-formatted chat with your personal or business WhatsApp number, allowing you to instantly reply to interested clients!
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>How do I connect my GoDaddy custom domain?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            If you bought a domain from GoDaddy, we configure the DNS A Records (185.199.108.153) and CNAME record (www) for you so your site loads smoothly under your custom web domain with free SSL encryption.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>What if I need updates or changes later?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            We provide free revisions during launch. For ongoing annual updates, we offer an optional Annual Maintenance Contract (AMC) for just ₹1,500/year which covers content updates, graphic refreshes, and domain renewal assistance.
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Floating Actions -->
+  <div class="floating-actions-bar">
+    <a href="https://wa.me/917083330914?text=Hello%20Krisha%20Tech" target="_blank" class="float-btn float-whatsapp" title="WhatsApp Chat">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/></svg>
+    </a>
+    <a href="tel:7083330914" class="float-btn float-call" title="Call Now">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+    </a>
+  </div>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <a href="index.html" class="brand-logo">
+            <img src="assets/krishatech_k_logo_4k.png" alt="Krisha Tech Logo" class="brand-logo-img">
+            <div class="brand-text-container">
+              <span class="brand-title">KRISHA TECH</span>
+              <span class="brand-sub">WE BUILD. YOU GROW.</span>
+            </div>
+          </a>
+          <p class="footer-brand-desc">
+            High-speed, conversion-focused websites designed for Indian small business owners.
+          </p>
+        </div>
+
+        <div>
+          <h4 class="footer-col-title">SOLUTIONS</h4>
+          <ul class="footer-links">
+            <li><a href="services.html">Mobile Websites</a></li>
+            <li><a href="services.html">WhatsApp Integration</a></li>
+            <li><a href="services.html">Google Maps & SEO</a></li>
+            <li><a href="services.html">Cost Estimator</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer-col-title">QUICK PAGES</h4>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="services.html">Our Services</a></li>
+            <li><a href="portfolio.html">Live Demos</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer-col-title">DIRECT CONTACT</h4>
+          <ul class="footer-links">
+            <li><a href="tel:7083330914">+91 7083330914</a></li>
+            <li><a href="https://wa.me/917083330914" target="_blank">WhatsApp Support</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>&copy; 2026 Krisha Tech. All Rights Reserved.</div>
+        <div style="color: var(--primary-indigo); font-family: var(--font-heading); font-weight: 800;">WE BUILD. YOU GROW.</div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/particles.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
