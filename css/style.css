@@ -26,6 +26,16 @@
   
   --font-heading: 'Outfit', sans-serif;
   --font-body: 'Plus Jakarta Sans', sans-serif;
+
+  /* Standard 8-Step Modular Type Scale Tokens */
+  --fs-xs: 0.75rem;    /* 12px - Badges / Small labels */
+  --fs-sm: 0.875rem;   /* 14px - Captions / Subtext */
+  --fs-base: 1rem;     /* 16px - Body / Links / Buttons */
+  --fs-md: 1.125rem;   /* 18px - Lead text / Card subheadings */
+  --fs-lg: 1.25rem;    /* 20px - Subtitles / Item titles */
+  --fs-xl: 1.5rem;     /* 24px - Section sub-titles / Card titles */
+  --fs-2xl: 2rem;      /* 32px - Section titles / Feature headers */
+  --fs-3xl: 2.75rem;   /* 44px - Display prices / Hero titles */
   
   --transition-fast: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
   --transition-normal: 0.35s cubic-bezier(0.4, 0, 0.2, 1);
@@ -463,11 +473,25 @@ body::after {
 
 .brand-sub {
   display: block;
-  font-size: 0.65rem;
+  font-size: var(--fs-xs);
   color: var(--accent-magenta);
   font-weight: 700;
-  letter-spacing: 1px;
-  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  text-transform: none;
+}
+
+/* --- Badges --- */
+.badge-transparent {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 12px;
+  background: rgba(16, 185, 129, 0.2);
+  border: 1px solid rgba(16, 185, 129, 0.4);
+  color: #34d399;
+  border-radius: var(--radius-pill);
+  font-size: var(--fs-xs);
+  font-weight: 800;
+  letter-spacing: 0.5px;
 }
 
 .nav-menu {
@@ -650,7 +674,7 @@ body::after {
   align-items: center;
   gap: 16px;
   flex-wrap: wrap;
-  margin-bottom: 40px;
+  margin-bottom: 0;
 }
 
 /* Hero Live Calculator Card */
