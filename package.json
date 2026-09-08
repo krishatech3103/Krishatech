@@ -11,7 +11,7 @@
     "preview": "wrangler dev"
   },
   "devDependencies": {
-    "wrangler": "^3.109.0"
+    "wrangler": "^4.0.0"
   },
   "keywords": [
     "krisha-tech",
