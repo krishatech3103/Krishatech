@@ -1,0 +1,17 @@
+{
+  "name": "Krisha Tech - Professional Web Development Agency",
+  "short_name": "Krisha Tech",
+  "description": "High-speed, conversion-focused websites for Indian small businesses @ ₹2,999",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#070913",
+  "theme_color": "#6366f1",
+  "icons": [
+    {
+      "src": "/assets/krishatech_k_logo_4k.png",
+      "sizes": "192x192 512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

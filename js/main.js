@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
 
   /* ==========================================
-     1. FUTURISTIC ANIMATED PRELOADER
+     1. FUTURISTIC ANIMATED PRELOADER (SEO & Performance Optimized)
      ========================================== */
   const preloader = document.getElementById('preloader');
   const counterEl = document.getElementById('preloader-counter');
@@ -16,28 +16,45 @@ document.addEventListener('DOMContentLoaded', () => {
   ];
 
   if (preloader && counterEl && progressBar) {
-    let progress = 0;
-    const interval = setInterval(() => {
-      progress += Math.floor(Math.random() * 12) + 5;
-      if (progress >= 100) {
-        progress = 100;
-        clearInterval(interval);
-        counterEl.textContent = '100%';
-        progressBar.style.width = '100%';
-        if (statusText) statusText.textContent = 'READY TO LAUNCH!';
+    const isBot = /bot|googlebot|crawler|spider|robot|crawling/i.test(navigator.userAgent);
+    const prefersReducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-        setTimeout(() => {
-          preloader.classList.add('preloader-hide');
-        }, 350);
-      } else {
-        counterEl.textContent = `${progress}%`;
-        progressBar.style.width = `${progress}%`;
-        if (statusText) {
-          const msgIdx = Math.floor((progress / 100) * statusMessages.length);
-          statusText.textContent = statusMessages[Math.min(msgIdx, statusMessages.length - 1)];
+    const finishPreloader = () => {
+      counterEl.textContent = '100%';
+      progressBar.style.width = '100%';
+      if (statusText) statusText.textContent = 'READY TO LAUNCH!';
+      setTimeout(() => {
+        preloader.classList.add('preloader-hide');
+        setTimeout(() => { preloader.style.display = 'none'; }, 500);
+      }, 150);
+    };
+
+    if (isBot || prefersReducedMotion) {
+      preloader.style.display = 'none';
+    } else {
+      let progress = 0;
+      const interval = setInterval(() => {
+        progress += Math.floor(Math.random() * 15) + 8;
+        if (progress >= 100) {
+          progress = 100;
+          clearInterval(interval);
+          finishPreloader();
+        } else {
+          counterEl.textContent = `${progress}%`;
+          progressBar.style.width = `${progress}%`;
+          if (statusText) {
+            const msgIdx = Math.floor((progress / 100) * statusMessages.length);
+            statusText.textContent = statusMessages[Math.min(msgIdx, statusMessages.length - 1)];
+          }
         }
-      }
-    }, 45);
+      }, 30);
+
+      // Safety fallback: ensure preloader never blocks user experience beyond 900ms
+      setTimeout(() => {
+        clearInterval(interval);
+        finishPreloader();
+      }, 900);
+    }
   }
 
   /* ==========================================

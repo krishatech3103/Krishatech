@@ -1,0 +1,29 @@
+# Dependencies
+node_modules/
+.pnp
+.pnp.js
+
+# Cloudflare & Wrangler
+.wrangler/
+.dev.vars
+
+# Gemini / IDE cache
+.gemini/
+.vscode/
+.idea/
+
+# Environment files
+.env
+.env.local
+.env.*.local
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+bun.lockb
+bun.lock
+
+# OS Files
+.DS_Store
+Thumbs.db

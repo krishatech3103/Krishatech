@@ -1,0 +1,26 @@
+# Wrangler Asset Ignore List
+node_modules/
+node_modules/**
+.git/
+.git/**
+.github/
+.github/**
+.wrangler/
+.wrangler/**
+.gemini/
+.gemini/**
+.vscode/
+.idea/
+
+# Config and Documentation files not needed as static website assets
+package.json
+package-lock.json
+bun.lockb
+bun.lock
+wrangler.jsonc
+.wranglerignore
+.gitignore
+.nojekyll
+CNAME
+README.md
+*.log

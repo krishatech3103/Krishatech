@@ -5,7 +5,13 @@
   "main": "index.html",
   "scripts": {
     "dev": "npx -y serve .",
-    "start": "npx -y serve ."
+    "start": "npx -y serve .",
+    "build": "echo 'Static build ready'",
+    "deploy": "wrangler deploy",
+    "preview": "wrangler dev"
+  },
+  "devDependencies": {
+    "wrangler": "^3.109.0"
   },
   "keywords": [
     "krisha-tech",
