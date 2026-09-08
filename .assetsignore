@@ -1,0 +1,28 @@
+# Cloudflare Workers Static Assets Ignore File
+# Prevents node_modules and system files from being scanned/uploaded as static assets
+
+node_modules/
+node_modules/**
+.git/
+.git/**
+.github/
+.github/**
+.wrangler/
+.wrangler/**
+.gemini/
+.gemini/**
+.vscode/
+.idea/
+
+package.json
+package-lock.json
+bun.lockb
+bun.lock
+wrangler.jsonc
+.wranglerignore
+.assetsignore
+.gitignore
+.nojekyll
+CNAME
+README.md
+*.log
