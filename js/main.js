@@ -1,287 +1,151 @@
 document.addEventListener('DOMContentLoaded', () => {
-
-  /* ==========================================
-     1. FUTURISTIC ANIMATED PRELOADER (SEO & Performance Optimized)
-     ========================================== */
-  const preloader = document.getElementById('preloader');
-  const counterEl = document.getElementById('preloader-counter');
-  const progressBar = document.getElementById('preloader-progress-bar');
-  const statusText = document.getElementById('preloader-status-text');
-
-  const statusMessages = [
-    'INITIALIZING ENGINE...',
-    'LOADING STYLING SYSTEM...',
-    'OPTIMIZING RESPONSIVE UTILS...',
-    'LAUNCHING KRISHA TECH...'
-  ];
-
-  if (preloader && counterEl && progressBar) {
-    const isBot = /bot|googlebot|crawler|spider|robot|crawling/i.test(navigator.userAgent);
-    const prefersReducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-    const finishPreloader = () => {
-      counterEl.textContent = '100%';
-      progressBar.style.width = '100%';
-      if (statusText) statusText.textContent = 'READY TO LAUNCH!';
-      setTimeout(() => {
-        preloader.classList.add('preloader-hide');
-        setTimeout(() => { preloader.style.display = 'none'; }, 500);
-      }, 150);
-    };
-
-    if (isBot || prefersReducedMotion) {
-      preloader.style.display = 'none';
-    } else {
-      let progress = 0;
-      const interval = setInterval(() => {
-        progress += Math.floor(Math.random() * 15) + 8;
-        if (progress >= 100) {
-          progress = 100;
-          clearInterval(interval);
-          finishPreloader();
-        } else {
-          counterEl.textContent = `${progress}%`;
-          progressBar.style.width = `${progress}%`;
-          if (statusText) {
-            const msgIdx = Math.floor((progress / 100) * statusMessages.length);
-            statusText.textContent = statusMessages[Math.min(msgIdx, statusMessages.length - 1)];
-          }
-        }
-      }, 30);
-
-      // Safety fallback: ensure preloader never blocks user experience beyond 900ms
-      setTimeout(() => {
-        clearInterval(interval);
-        finishPreloader();
-      }, 900);
-    }
-  }
-
-  /* ==========================================
-     2. MULTI-PAGE ACTIVE NAV LINK HIGHLIGHTING
-     ========================================== */
-  const currentPath = window.location.pathname;
-  const pageName = currentPath.split('/').pop() || 'index.html';
-  const navLinks = document.querySelectorAll('.nav-link');
-
-  navLinks.forEach(link => {
-    const href = link.getAttribute('href');
-    if (href === pageName || (pageName === '' && href === 'index.html') || (pageName === 'index.html' && href === 'index.html')) {
-      link.classList.add('active');
-    } else {
-      link.classList.remove('active');
-    }
-  });
-
-  /* ==========================================
-     3. MOBILE NAVIGATION MENU TOGGLE
-     ========================================== */
-  const menuToggleBtn = document.getElementById('menu-toggle');
+  const menuButton = document.getElementById('menu-toggle');
   const navMenu = document.getElementById('nav-menu');
-  const hamburgerIcon = menuToggleBtn?.querySelector('.hamburger-icon');
-  const closeIcon = menuToggleBtn?.querySelector('.close-icon');
 
-  if (menuToggleBtn && navMenu) {
-    menuToggleBtn.addEventListener('click', (e) => {
-      e.stopPropagation();
-      const isOpen = navMenu.classList.toggle('open');
-      if (hamburgerIcon && closeIcon) {
-        hamburgerIcon.style.display = isOpen ? 'none' : 'block';
-        closeIcon.style.display = isOpen ? 'block' : 'none';
-      }
-    });
-
-    document.addEventListener('click', (e) => {
-      if (!navMenu.contains(e.target) && !menuToggleBtn.contains(e.target)) {
-        navMenu.classList.remove('open');
-        if (hamburgerIcon && closeIcon) {
-          hamburgerIcon.style.display = 'block';
-          closeIcon.style.display = 'none';
-        }
-      }
-    });
-  }
-
-  /* ==========================================
-     4. SCROLL REVEAL (INTERSECTION OBSERVER)
-     ========================================== */
-  const animatedElements = document.querySelectorAll('[data-animate]');
-  const observerOptions = {
-    root: null,
-    rootMargin: '0px 0px -60px 0px',
-    threshold: 0.15
+  const setMenuState = (isOpen) => {
+    if (!menuButton || !navMenu) return;
+    navMenu.classList.toggle('open', isOpen);
+    document.body.classList.toggle('nav-open', isOpen);
+    menuButton.setAttribute('aria-expanded', String(isOpen));
+    menuButton.setAttribute('aria-label', isOpen ? 'Close navigation menu' : 'Open navigation menu');
+    const menuPath = menuButton.querySelector('path');
+    if (menuPath) {
+      menuPath.setAttribute('d', isOpen ? 'M6 6l12 12M18 6L6 18' : 'M4 7h16M4 12h16M4 17h16');
+    }
   };
 
-  const scrollObserver = new IntersectionObserver((entries, observer) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('animated');
-        observer.unobserve(entry.target);
+  if (menuButton && navMenu) {
+    menuButton.addEventListener('click', () => {
+      setMenuState(menuButton.getAttribute('aria-expanded') !== 'true');
+    });
+
+    navMenu.querySelectorAll('a').forEach((link) => {
+      link.addEventListener('click', () => setMenuState(false));
+    });
+
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape') {
+        setMenuState(false);
+        menuButton.focus();
       }
     });
-  }, observerOptions);
 
-  animatedElements.forEach(el => scrollObserver.observe(el));
-
-  /* ==========================================
-     5. ANIMATED STATS NUMBER COUNTER
-     ========================================== */
-  const statNumbers = document.querySelectorAll('.stat-number[data-count]');
-
-  const counterObserver = new IntersectionObserver((entries, observer) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        const el = entry.target;
-        const target = parseInt(el.getAttribute('data-count'), 10) || 0;
-        const suffix = el.getAttribute('data-suffix') || '';
-        const prefix = el.getAttribute('data-prefix') || '';
-        let count = 0;
-        const duration = 1800; // ms
-        const stepTime = Math.max(Math.floor(duration / target), 20);
-
-        const timer = setInterval(() => {
-          count += Math.ceil(target / (duration / stepTime));
-          if (count >= target) {
-            count = target;
-            clearInterval(timer);
-          }
-          el.textContent = `${prefix}${count.toLocaleString()}${suffix}`;
-        }, stepTime);
-
-        observer.unobserve(el);
+    document.addEventListener('click', (event) => {
+      if (
+        menuButton.getAttribute('aria-expanded') === 'true' &&
+        !navMenu.contains(event.target) &&
+        !menuButton.contains(event.target)
+      ) {
+        setMenuState(false);
       }
     });
-  }, { threshold: 0.5 });
 
-  statNumbers.forEach(num => counterObserver.observe(num));
-
-  /* ==========================================
-     6. THEME TOGGLER (DARK / LIGHT MODE)
-     ========================================== */
-  const themeToggleBtn = document.getElementById('theme-toggle');
-  const savedTheme = localStorage.getItem('krisha_theme') || 'dark';
-  document.documentElement.setAttribute('data-theme', savedTheme);
-
-  if (themeToggleBtn) {
-    themeToggleBtn.addEventListener('click', () => {
-      const currentTheme = document.documentElement.getAttribute('data-theme');
-      const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-      document.documentElement.setAttribute('data-theme', newTheme);
-      localStorage.setItem('krisha_theme', newTheme);
+    window.addEventListener('resize', () => {
+      if (window.innerWidth > 980) setMenuState(false);
     });
   }
 
-  /* ==========================================
-     7. INTERACTIVE WEB COST ESTIMATOR / CALCULATOR
-     ========================================== */
-  const calcCards = document.querySelectorAll('.calc-option-card');
-  const calcDisplay = document.getElementById('calc-total-display');
-  const calcBtn = document.getElementById('calc-whatsapp-btn');
+  document.querySelectorAll('.faq-item').forEach((item) => {
+    const button = item.querySelector('.faq-question');
+    if (!button) return;
 
-  if (calcCards.length > 0 && calcDisplay) {
-    function updateCalculator() {
-      let total = 2999; // Base package price
-      const selectedFeatures = ['Starter 3-5 Page Website (₹2,999)'];
+    button.addEventListener('click', () => {
+      const willOpen = !item.classList.contains('open');
+      item.classList.toggle('open', willOpen);
+      button.setAttribute('aria-expanded', String(willOpen));
+    });
+  });
 
-      calcCards.forEach(card => {
-        const checkbox = card.querySelector('.calc-checkbox');
-        const price = parseInt(card.getAttribute('data-price'), 10) || 0;
-        const title = card.getAttribute('data-title') || '';
+  const filterButtons = document.querySelectorAll('.filter-btn[data-filter]');
+  const portfolioItems = document.querySelectorAll('.portfolio-item[data-type]');
+  const emptyState = document.getElementById('portfolio-empty');
 
-        if (checkbox && checkbox.checked) {
-          card.classList.add('selected');
-          total += price;
-          selectedFeatures.push(`${title} (+₹${price})`);
-        } else {
-          card.classList.remove('selected');
-        }
+  filterButtons.forEach((button) => {
+    button.addEventListener('click', () => {
+      const filter = button.dataset.filter;
+      let visibleCount = 0;
+
+      filterButtons.forEach((otherButton) => {
+        const selected = otherButton === button;
+        otherButton.classList.toggle('active', selected);
+        otherButton.setAttribute('aria-pressed', String(selected));
       });
 
-      calcDisplay.textContent = `₹ ${total.toLocaleString()}`;
+      portfolioItems.forEach((item) => {
+        const visible = filter === 'all' || item.dataset.type === filter;
+        item.hidden = !visible;
+        if (visible) visibleCount += 1;
+      });
 
-      if (calcBtn) {
-        const msgText = `Hello Krisha Tech,%0A%0AI built a custom website quote on your website:%0A• Total Estimate: ₹${total.toLocaleString()}%0A• Selected Services:%0A  - ${selectedFeatures.join('%0A  - ')}%0A%0APlease get back to me with next steps!`;
-        calcBtn.setAttribute('href', `https://wa.me/917083330914?text=${msgText}`);
+      if (emptyState) {
+        emptyState.classList.toggle('visible', visibleCount === 0);
       }
+    });
+  });
+
+  const trackEvent = (eventName, details = {}) => {
+    if (!eventName) return;
+    if (Array.isArray(window.dataLayer)) {
+      window.dataLayer.push({ event: eventName, ...details });
     }
+    window.dispatchEvent(new CustomEvent('krisha:track', {
+      detail: { event: eventName, ...details }
+    }));
+  };
 
-    calcCards.forEach(card => {
-      card.addEventListener('click', (e) => {
-        const checkbox = card.querySelector('.calc-checkbox');
-        if (checkbox && e.target !== checkbox) {
-          checkbox.checked = !checkbox.checked;
-        }
-        updateCalculator();
-      });
-    });
-
-    updateCalculator();
-  }
-
-  /* ==========================================
-     8. PORTFOLIO CATEGORY FILTER
-     ========================================== */
-  const filterBtns = document.querySelectorAll('.filter-btn');
-  const portfolioItems = document.querySelectorAll('.portfolio-item');
-
-  if (filterBtns.length > 0 && portfolioItems.length > 0) {
-    filterBtns.forEach(btn => {
-      btn.addEventListener('click', () => {
-        filterBtns.forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-
-        const category = btn.getAttribute('data-filter');
-        portfolioItems.forEach(item => {
-          const itemCat = item.getAttribute('data-category');
-          if (category === 'all' || itemCat === category) {
-            item.style.display = 'block';
-            setTimeout(() => {
-              item.style.opacity = '1';
-              item.style.transform = 'scale(1)';
-            }, 50);
-          } else {
-            item.style.opacity = '0';
-            item.style.transform = 'scale(0.9)';
-            setTimeout(() => {
-              item.style.display = 'none';
-            }, 300);
-          }
+  document.querySelectorAll('[data-track]').forEach((element) => {
+    element.addEventListener('click', () => {
+      element.dataset.track.split(/\s+/).filter(Boolean).forEach((eventName) => {
+        trackEvent(eventName, {
+          page: window.location.pathname,
+          label: element.textContent.trim().replace(/\s+/g, ' ')
         });
       });
     });
-  }
-
-  /* ==========================================
-     9. FAQ ACCORDION HANDLER
-     ========================================== */
-  const faqItems = document.querySelectorAll('.faq-item');
-  faqItems.forEach(item => {
-    const questionBtn = item.querySelector('.faq-question');
-    if (questionBtn) {
-      questionBtn.addEventListener('click', () => {
-        const isOpen = item.classList.contains('open');
-        faqItems.forEach(i => i.classList.remove('open'));
-        if (!isOpen) {
-          item.classList.add('open');
-        }
-      });
-    }
   });
 
-  /* ==========================================
-     10. CONTACT FORM DISPATCH TO WHATSAPP
-     ========================================== */
   const contactForm = document.getElementById('krisha-contact-form');
-  if (contactForm) {
-    contactForm.addEventListener('submit', (e) => {
-      e.preventDefault();
-      const name = document.getElementById('form-name')?.value.trim() || '';
-      const phone = document.getElementById('form-phone')?.value.trim() || '';
-      const biztype = document.getElementById('form-biztype')?.value || '';
-      const msg = document.getElementById('form-msg')?.value.trim() || '';
+  const formStatus = document.getElementById('form-status');
 
-      const text = `Hello Krisha Tech,%0A%0AI want a website for my business:%0A• Name: ${encodeURIComponent(name)}%0A• Phone: ${encodeURIComponent(phone)}%0A• Category: ${encodeURIComponent(biztype)}%0A• Requirements: ${encodeURIComponent(msg)}`;
-      window.open(`https://wa.me/917083330914?text=${text}`, '_blank');
+  if (contactForm) {
+    contactForm.addEventListener('submit', (event) => {
+      event.preventDefault();
+
+      if (!contactForm.checkValidity()) {
+        contactForm.reportValidity();
+        if (formStatus) {
+          formStatus.textContent = 'Please complete the required fields before continuing.';
+          formStatus.classList.add('error');
+        }
+        return;
+      }
+
+      const nameField = document.getElementById('form-name');
+      const businessField = document.getElementById('form-business');
+      const phoneField = document.getElementById('form-phone');
+      const businessTypeField = document.getElementById('form-biztype');
+      const messageField = document.getElementById('form-msg');
+      const name = nameField ? nameField.value.trim() : '';
+      const business = businessField && businessField.value.trim() ? businessField.value.trim() : 'Not provided';
+      const phone = phoneField ? phoneField.value.trim() : '';
+      const businessType = businessTypeField ? businessTypeField.value.trim() : '';
+      const message = messageField && messageField.value.trim() ? messageField.value.trim() : 'I would like to discuss the ₹2,999 business website package.';
+      const whatsappMessage = [
+        'Hi Krisha Tech, I’m interested in the ₹2,999 business website package.',
+        '',
+        `Name: ${name}`,
+        `Business name: ${business}`,
+        `Phone / WhatsApp: ${phone}`,
+        `Type of business: ${businessType}`,
+        `Message: ${message}`
+      ].join('\n');
+
+      trackEvent('contact_form_submit', { page: window.location.pathname });
+      if (formStatus) {
+        formStatus.textContent = 'WhatsApp is opening with your details. Press send there to complete your enquiry.';
+        formStatus.classList.remove('error');
+      }
+      window.open(`https://wa.me/917083330914?text=${encodeURIComponent(whatsappMessage)}`, '_blank', 'noopener');
     });
   }
 });

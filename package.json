@@ -1,7 +1,7 @@
 {
   "name": "krishatech",
   "version": "1.0.0",
-  "description": "Krisha Tech - Professional Web Development & IT Solutions",
+  "description": "Krisha Tech - affordable professional websites for Indian small businesses",
   "main": "index.html",
   "scripts": {
     "dev": "npx -y serve .",
